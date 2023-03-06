@@ -15,8 +15,17 @@ class CustomUserAdmin(UserAdmin):
             "Profile",
             {
                 "fields": (
-                    "username", "password", "name", "email", "is_host",),
-                "classes":("wide",),
+                    "avatar",
+                    "username",
+                    "password",
+                    "name",
+                    "email",
+                    "is_host",
+                    "gender",
+                    "language",
+                    "currency",
+                ),
+                "classes": ("wide",),
             },
         ),
         (
@@ -29,18 +38,23 @@ class CustomUserAdmin(UserAdmin):
                     "groups",
                     "user_permissions",
                 ),
-                "classes":("collapse",),
+                "classes": ("collapse",),
             },
         ),
         (
             "Importat Dates",
             {
                 "fields": ("last_login", "date_joined"),
-                "classes":("collapse",),
+                "classes": ("collapse",),
             },
         ),
     )
     # fields = ("email","password","name")
-    list_display = ("username","email","name","is_host",)
+    list_display = (
+        "username",
+        "email",
+        "name",
+        "is_host",
+    )
 
     pass
