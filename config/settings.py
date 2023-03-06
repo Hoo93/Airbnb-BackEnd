@@ -32,8 +32,9 @@ ALLOWED_HOSTS = []
 
 CUSTOM_APPS = [
     # "houses.apps.HousesConfig",
-    "users.apps.UsersConfig"
-    "rooms.apps.RoomsConfig"
+    "common.apps.CommonConfig",
+    "users.apps.UsersConfig",
+    "rooms.apps.RoomsConfig",
 ]
 
 SYSTEM_APPS = [
@@ -43,7 +44,6 @@ SYSTEM_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
 ]
 
 INSTALLED_APPS = SYSTEM_APPS + CUSTOM_APPS
@@ -97,9 +97,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
 
 
