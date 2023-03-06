@@ -2,12 +2,22 @@ from django.db import models
 from common.models import CommonModel
 
 
-class Amenity(models.Model):
+class Amenities(models.Model):
 
     """Amenity Definition"""
 
+    def __str__(self):
+        return self.name
+
     name = models.CharField(max_length=150)
-    description = models.CharField(max_length=150, null=True)
+    description = models.CharField(
+        max_length=150,
+        null=True,
+        blank=True,
+    )
+
+    # class Meta:
+    #     verbose_name_plural = "Amenity"
 
 
 # Create your models here.
@@ -19,6 +29,11 @@ class Room(CommonModel):
         ENTIRE_PLACE = ("entire_place", "Entire Place")
         PRIVATE_ROOM = ("private_room", "Private Room")
         SHARED_ROOM = ("shared_room", "Shared Rooo")
+
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=180, default="")
 
     country = models.CharField(
         max_length=50,
@@ -47,5 +62,5 @@ class Room(CommonModel):
         on_delete=models.CASCADE,
     )
     amenities = models.ManyToManyField(
-        "rooms.Amenity",
+        "rooms.Amenities",
     )
