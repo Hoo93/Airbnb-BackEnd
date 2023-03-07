@@ -19,14 +19,17 @@ class Wishlist(CommonModel):
         null=True,
         blank=True,
         on_delete=models.CASCADE,
+        related_name="wishlists",
     )
     experiences = models.ForeignKey(
         "experiences.Experience",
         null=True,
         blank=True,
+        related_name="wishlists",
         on_delete=models.CASCADE,
     )
     user = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
+        related_name="wishlists",
     )

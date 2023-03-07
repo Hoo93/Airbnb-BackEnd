@@ -33,6 +33,9 @@ class Room(CommonModel):
     def __str__(self):
         return self.name
 
+    def total_amenities(self):
+        return self.amenities.count()
+
     name = models.CharField(max_length=180, default="")
 
     country = models.CharField(
@@ -60,6 +63,7 @@ class Room(CommonModel):
     owner = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
+        related_name="rooms",
     )
     amenities = models.ManyToManyField(
         "rooms.Amenity",
@@ -69,4 +73,5 @@ class Room(CommonModel):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
+        related_name="rooms",
     )

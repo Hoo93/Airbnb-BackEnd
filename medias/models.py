@@ -17,12 +17,14 @@ class Photo(CommonModel):
         null=True,
         blank=True,
         on_delete=models.CASCADE,
+        related_name="photos",
     )
     experience = models.ForeignKey(
         "experiences.Experience",
         null=True,
         blank=True,
         on_delete=models.CASCADE,
+        related_name="photos",
     )
 
 
@@ -35,4 +37,5 @@ class Video(CommonModel):
     experince = models.OneToOneField(
         "experiences.Experience",
         on_delete=models.CASCADE,
+        related_name="videos",
     )
