@@ -2,7 +2,7 @@ from django.db import models
 from common.models import CommonModel
 
 
-class Amenities(models.Model):
+class Amenity(CommonModel):
 
     """Amenity Definition"""
 
@@ -16,8 +16,8 @@ class Amenities(models.Model):
         blank=True,
     )
 
-    # class Meta:
-    #     verbose_name_plural = "Amenity"
+    class Meta:
+        verbose_name_plural = "Amenities"
 
 
 # Create your models here.
@@ -43,8 +43,8 @@ class Room(CommonModel):
         max_length=80,
         default="서울",
     )
-    rooms = models.PositiveIntegerField()
     price = models.PositiveIntegerField()
+    rooms = models.PositiveIntegerField()
     toilets = models.PositiveIntegerField()
     description = models.TextField()
     address = models.CharField(
@@ -62,5 +62,11 @@ class Room(CommonModel):
         on_delete=models.CASCADE,
     )
     amenities = models.ManyToManyField(
-        "rooms.Amenities",
+        "rooms.Amenity",
+    )
+    category = models.ForeignKey(
+        "categories.Category",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
     )
