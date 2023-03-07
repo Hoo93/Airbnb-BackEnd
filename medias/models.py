@@ -5,6 +5,8 @@ from common.models import CommonModel
 
 
 class Photo(CommonModel):
+    def __str__(self):
+        return "Photo File"
 
     file = models.ImageField()
     description = models.CharField(
@@ -25,6 +27,8 @@ class Photo(CommonModel):
 
 
 class Video(CommonModel):
+    def __str__(self):
+        return "Video File"
 
     file = models.ImageField()
 
